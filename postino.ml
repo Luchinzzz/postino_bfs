@@ -206,9 +206,9 @@ let find_path start k grafo lista_archi (Graph_suc succ)=
 
 let find_path2 start k grafo lista_archi (Graph_suc succ)=
     let result = (bfs_circuit2 start k grafo lista_archi (Graph_suc succ))
-    in print_string("Cammino finale:"); stampalista (List.rev result) ;
-    print_string("Cammino finale archi:"); stampaarchi (trasforma_cammino (List.rev result));
-    print_string("Il peso del cammino è:"); print_int (costo_del_cammino result grafo); print_newline();;
+    in print_string("Cammino finale bfs_circuit2:"); stampalista (List.rev result) ;
+    print_string("Cammino finale bfs_circuit2 archi:"); stampaarchi (trasforma_cammino (List.rev result));
+    print_string("Il peso del cammino con bfs_circuit 2 è:"); print_int (costo_del_cammino result grafo); print_newline();;
 
 (**------------ *)
 
@@ -218,7 +218,9 @@ let lista_archi2= controllo_archi e2 grafo2.archi;;
 let lista_archi3= controllo_archi e3 grafo3.archi;;
 let lista_archi4= controllo_archi e4 grafo4.archi;;
 
-
+print_string("Risultati prima funzione bfs_circuit");;
+print_newline();;
+(*
 find_path 2 50 grafo1.archi lista_archi1 g_s1;;
 print_newline();;
 
@@ -232,11 +234,23 @@ print_newline();;
 
 find_path 1 50 grafo4.archi lista_archi4 g_s4;;
 print_newline();;
-
-print_string("Seconda funzione bfs_circuit");;
+*)
+print_string("Risultati seconda funzione bfs_circuit");;
 print_newline();;
 
-find_path2 2 23  grafo1.archi lista_archi1 g_s1;;
+
+find_path2 2 50 grafo1.archi lista_archi1 g_s1;;
+print_newline();;
+
+
+find_path2 3 30 grafo2.archi lista_archi2 g_s2;;
+print_newline();;
+
+
+find_path2 5 70 grafo3.archi lista_archi3 g_s3;;
+print_newline();;
+
+find_path2 1 50 grafo4.archi lista_archi4 g_s4;;
 print_newline();;
 
 find_path2 1 50 grafo4.archi lista_archi4 g_s4;;
