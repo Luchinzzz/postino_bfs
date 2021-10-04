@@ -122,7 +122,7 @@ let rec stampaarchi = function
 (**funzione che permette di ricavare la lunghezza associata all'arco passato (x,y) *)
 let rec valore_arco x y = function
     [] -> 0
-    | (a,b,c)::rest -> if (x=a && y=c) || (x=c && y=a)then b else valore_arco x y rest;;
+    | (a,b,c)::rest -> if (x=a && y=c) || (x=c && y=a) then b else valore_arco x y rest;;
 
 
 (**calcola il costo del cammino *)
@@ -182,11 +182,30 @@ let bfs_circuit inizio k grafo lista_archi (Graph_suc succ) =
                 else ricerca (rest @ (estendi cammino))
 in ricerca [[inizio]];;
 
+
+let bfs_circuit2 inizio k grafo lista_archi (Graph_suc succ) =
+    let estendi cammino = stampalista cammino;
+        List.map (function x ->  x::cammino )(List.filter (function x ->  not (List.mem x cammino))(succ (List.hd cammino)))
+    in let rec ricerca  = function
+            [] -> raise NotFound 
+            | cammino::rest -> 
+                (*se il costo del cammino è minore di k e contiene tutti gli archi passati allora ritorna il cammino*)
+                if ((costo_del_cammino ([inizio] @ cammino) grafo < k) && (List.mem inizio (succ (List.hd cammino))) && (controllo_lista lista_archi (trasforma_cammino ([inizio] @ cammino)))) 
+                    then  [inizio] @ cammino 
+                else ricerca (rest @ (estendi cammino))
+in ricerca [[inizio]];;
+
 (**------------ *)
 
 (**RICERCA CAMMINO E STAMPA*)
 let find_path start k grafo lista_archi (Graph_suc succ)=
     let result = (bfs_circuit start k grafo lista_archi (Graph_suc succ))
+    in print_string("Cammino finale:"); stampalista (List.rev result) ;
+    print_string("Cammino finale archi:"); stampaarchi (trasforma_cammino (List.rev result));
+    print_string("Il peso del cammino è:"); print_int (costo_del_cammino result grafo); print_newline();;
+
+let find_path2 start k grafo lista_archi (Graph_suc succ)=
+    let result = (bfs_circuit2 start k grafo lista_archi (Graph_suc succ))
     in print_string("Cammino finale:"); stampalista (List.rev result) ;
     print_string("Cammino finale archi:"); stampaarchi (trasforma_cammino (List.rev result));
     print_string("Il peso del cammino è:"); print_int (costo_del_cammino result grafo); print_newline();;
@@ -214,4 +233,10 @@ print_newline();;
 find_path 1 50 grafo4.archi lista_archi4 g_s4;;
 print_newline();;
 
+print_string("Seconda funzione bfs_circuit");;
+print_newline();;
 
+find_path2 2 23  grafo1.archi lista_archi1 g_s1;;
+print_newline();;
+
+find_path2 1 50 grafo4.archi lista_archi4 g_s4;;
