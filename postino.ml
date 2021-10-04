@@ -220,7 +220,7 @@ let lista_archi4= controllo_archi e4 grafo4.archi;;
 
 print_string("Risultati prima funzione bfs_circuit");;
 print_newline();;
-(*
+
 find_path 2 50 grafo1.archi lista_archi1 g_s1;;
 print_newline();;
 
@@ -234,7 +234,7 @@ print_newline();;
 
 find_path 1 50 grafo4.archi lista_archi4 g_s4;;
 print_newline();;
-*)
+
 print_string("Risultati seconda funzione bfs_circuit");;
 print_newline();;
 
