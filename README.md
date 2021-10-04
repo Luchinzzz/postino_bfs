@@ -1,6 +1,6 @@
 
 # :mailbox_with_mail: Il problema del postino di campagna: ricerca in ampiezza
-OCaml project for Artificial Intelligent Systems - Intellingent Application Development exam.
+OCaml project for Artificial Intelligent Systems - Intelligent Application Development exam.
 ##  :pencil: Table of contents
 * [Description](#description)
 * [How to use](#how-to-use)
