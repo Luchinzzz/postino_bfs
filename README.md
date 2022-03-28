@@ -18,8 +18,7 @@ The goal of this project is to create a program that allows you to find, given a
 A BFS search is used to find the circuit, furthermore it is assumed that graph G is an indirect graph. 
 
 ## :man_technologist: How to use <a name="how-to-use"/>
-In source code there some example of graph...
-
+Most of the information on how the code works can be found in the report "Relazione_postino", where you can also see some examples of graphs used in tests. 
 
 ## :gear: Setup <a name="setup"/>
 To run this project, you can both download OCaml from original [website](https://ocaml.org/learn/tutorials/up_and_running.html) or you can use [TryOCaml] where you can try this language in an interactive mode without downloading nothing. If you prefer to use locally then you have run this command to compile it:
